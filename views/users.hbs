@@ -6,21 +6,31 @@
 <br>
 <br>Для повышения конкурентоспособности и укрепления рыночных позиций требуется переосмыслить на основе новых технологий систему взаимодействия с десятками миллионов пассажиров и внутренние бизнес-процессы всех участников отрасли воздушных перевозок.
 </p>
-<form action="/users" method="post">
+<form id="form1" action="/users" method="post">
 <input type="text">
 
 <ul class="list">
     {{#each users}}
         <li class="list-item col-1-2">
-            <a class="users" href="/articles/{{this.id}}">{{this.name}}
+            <a class="users" href="/users/{{this.id}}">{{this.name}}
             </a>
-            <label class="input-group col-1-4">
-        <span class="articleInfo">Info:</span>
-        <input id="inputInfo" class="infoClass" type="text" name="info" value="{{meeting.ta}}">
-    </label>
+
+            <div>
+                <label>Target:</label>
+                <input type="text" name="target" />
+            </div>
+            <div>
+                <label>Date:</label>
+                <input type="date" name="date" />
+            </div>
+            <div>
+                <input class="btnAdd" type="submit" value="Add" />
+            </div>
+        </form>
         </li>
     {{/each}}
 </ul>
-
+</form>
+<form id='form2'>
 <button id='history' type="submit">History</button>
 </form>
