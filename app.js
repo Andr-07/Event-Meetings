@@ -54,7 +54,7 @@ const indexRouter = require("./routes/index");
 
 // Подключаем mongoose.
 const mongoose = require("mongoose");
-mongoose.connect('mongodb://localhost:27017/learnAuth', { useNewUrlParser: true });
+mongoose.connect('mongodb://localhost:27017/EventMeetings', { useNewUrlParser: true });
 
 
 // Подключаем статику
