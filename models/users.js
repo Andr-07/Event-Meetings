@@ -8,7 +8,7 @@ const userSchema = new mongoose.Schema({
     position: String,
     globalEvent: {
         eventNames:String, 
-        eventDate:Date
+        eventDate: String
     },
     meetings: [{
         invited: String,
