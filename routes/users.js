@@ -19,10 +19,6 @@ router.get('/:id', async function (req, res) {
     // res.redirect('https://google.com')
 });
 
-
-
-
-
 // /* GET users listing. */
 // router.get('/', async function(req, res) {
 //   const users = await User.find();
@@ -44,7 +40,4 @@ router.get('/:id', async function (req, res) {
 // router.get('/form', function(req, res) {
 //   res.render('users');
 // });
-
-
-
 module.exports = router;
