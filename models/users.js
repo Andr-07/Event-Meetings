@@ -4,6 +4,7 @@ const userSchema = new mongoose.Schema({
     name: String,
     company: String,
     position: String,
+    password: String,
     globalEvent: {
         eventNames:String,
         eventDate:Date

@@ -39,10 +39,9 @@ router.route('/login')
   .post(async (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
-
-    const user = await User.findOne({ username });
-    if (!user) {
-      res.redirect('/login');
+      const user = await User.findOne({ email: username });
+      if (!user) {
+        res.redirect('/login');
       // } else if (!user.validPassword(password)) {
     } else if (user.password !== password) {
       res.redirect('/login');
@@ -50,7 +49,6 @@ router.route('/login')
       req.session.user = user;
       res.redirect('/dashboard');
     }
-
   });
 
 
