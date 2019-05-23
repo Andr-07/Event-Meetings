@@ -5,7 +5,6 @@ document.addEventListener('DOMContentLoaded', event => {
     const createEm= document.getElementById("createEm");
     const createC = document.getElementById("createC");
     const createP = document.getElementById("createP");
-
     
     formCreateNew.addEventListener('submit', async (e) => {
     e.preventDefault();

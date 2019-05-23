@@ -11,28 +11,35 @@ router.get('/', sessionChecker, (req, res) => {
 router.get('/show', async function (req, res){
     let all = await User.find();
     let arr =[];
-    let arr2 =[];
+    let arrStatus =[];
     let meet = (await User.find()).map(item=>item.meetings);
     for (let i = 0; i < meet.length; i++) {
         console.log(meet[i][0].status);
         arr.push(meet[i][0].status)
     }
-    for (let i = 0; i < meet.length; i++) {
-      if (meet[i][0].invited===undefined) {
-        meet[i][0].invited = "Нет встреч"
-      } else "Есть встреча"
-      arr2.push(meet[i][0].invited)
+    for (let j = 0; j < meet.length; j++) {
+      if (meet[j][0].invited===undefined) {
+        meet[j][0].invited = "Нет встреч"
+      } else meet[j][0].invited = "Есть встреча " + meet[j][0].invited;
+      arrStatus.push(meet[j][0].invited)
   }
-    
-    console.log(arr2);
-    
-    res.render('showlist', {list:all, arr:arr})
-
-    });
+    res.render('showlist', {list:all, arr:arrStatus})
+    })
 
 
-  router.get('/meetings', sessionChecker, (req, res) => {
-    res.render('admin');
+  router.get('/meetings', async function (req, res)  {
+    let all = await User.find();
+    let meet = (await User.find()).map(item=>item.meetings);
+    for (let i = 0; i < meet.length; i++) {
+        console.log(meet[i][0].status);
+        arr.push(meet[i][0].status)
+    }
+  //   let all = [
+  //     ['Andrey', 'Katrin', 'Elen'],
+  //   ['Manager', 'Intern',"intern"]
+  // ]
+  
+    res.render('meetings', {list:all});
   });
 
 
@@ -54,7 +61,7 @@ router.post('/createNew', async function (req, res) {
             eventDate: "23.05.2019"
     },
     meetings: [{
-        status: false,
+        status: false
     }]
     })
     await saveData.save();
