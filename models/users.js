@@ -16,4 +16,12 @@ const userSchema = new mongoose.Schema({
     }]
 });
 
+userSchema.statics.getUsers = async function() {
+    return this.find();
+}
+
+userSchema.statics.addUsers = async function(event) {
+    await event.save();
+}
+
 module.exports = mongoose.model('User', userSchema);
