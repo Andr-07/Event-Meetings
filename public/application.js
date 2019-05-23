@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', event => {
     const createC = document.getElementById("createC");
     const createP = document.getElementById("createP");
     
-    formCreateNew.addEventListener('submit', async (e) => {
+    formCreateNew && formCreateNew.addEventListener('submit', async (e) => {
     e.preventDefault();
     let res = await fetch('/admin/createNew', {
         method: 'POST',
@@ -25,4 +25,17 @@ document.addEventListener('DOMContentLoaded', event => {
     console.log("+++++++++++")
     
 })
+
+const createMeet = document.querySelectorAll(".createMeet");
+const creation = document.querySelectorAll(".creation");
+
+console.log(creation)
+
+for (let i = 0; i < creation.length; i++) {
+    creation[i].addEventListener('click', async (e) => {
+        // e.preventDefault();
+        // let res = await fetch(`/admin/${e.target.id}`);
+        window.location.href = `/admin/${e.target.id}`
+        })   
+}
 });

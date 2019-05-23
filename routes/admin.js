@@ -29,16 +29,6 @@ router.get('/show', async function (req, res){
 
   router.get('/meetings', async function (req, res)  {
     let all = await User.find();
-    let meet = (await User.find()).map(item=>item.meetings);
-    for (let i = 0; i < meet.length; i++) {
-        console.log(meet[i][0].status);
-        arr.push(meet[i][0].status)
-    }
-  //   let all = [
-  //     ['Andrey', 'Katrin', 'Elen'],
-  //   ['Manager', 'Intern',"intern"]
-  // ]
-  
     res.render('meetings', {list:all});
   });
 
@@ -67,6 +57,22 @@ router.post('/createNew', async function (req, res) {
     await saveData.save();
     console.log(saveData);
     res.json(saveData)
+  })
+
+
+  router.get('/:id', async function (req, res) {
+    let id = req.params.id;
+    let all = await User.findById(req.params.id);
+    let person =  all.meetings.map(item=>item.invited)[0]
+
+    let invitedPerson = await User.find({name:person})
+
+    console.log(invitedPerson[0])
+    // let answer = req.body.createMeet;
+    // let response = await Category.findOneById(answer);
+    // console.log('---------', answer)
+    // res.json(response)
+    res.render('onePerson', {list: all, person:invitedPerson[0]});
   })
 
 

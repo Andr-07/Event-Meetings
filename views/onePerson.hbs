@@ -1,0 +1,26 @@
+<h1>Создание встречи</h1>
+<div class="row">
+    <div class="col-4" style="border-style: double; padding:2px">
+Контактная информация {{list.name}}
+<p></p>
+Должность: {{list.position}}
+<p></p>
+Компания: {{list.company}}
+<p></p>
+Почта: {{list.email}}
+<p></p>
+</div>
+<div class="col-4" style="border-style: double; padding:2px">
+Контактная информация приглашенного
+{{#each list.meetings}}
+{{this.invited}}
+{{/each}}
+<p></p>
+Должность: {{person.position}}
+<p></p>
+Компания: {{person.company}}
+<p></p>
+Почта: {{person.email}}
+<p></p>
+</div>
+</div>

@@ -1,20 +1,6 @@
+<a href="/admin">Назад</a>
 <h1>Create a new meeting</h1>
 
-<form id="createNew" >
-    <label>Name</label>
-    <input id="createName" name="createName" type="text" value="{{createName}}">
-    <br>
-    <label>Email</label>
-    <input id="createEm" name="createEm" type="text" value="{{createEm}}">
-    <br>
-    <label>Company</label>
-    <input id="createC" name="createC" type="text" value="{{createC}}">
-    <br>
-    <label>Position</label>
-    <input id="createP" name="createP" type="text" value="{{createP}}">
-    <br>
-    <button type="submit">Save</button>
-</form>
 
 <div class="log"></div>
 
@@ -24,6 +10,8 @@
             <th>Имя</th>
             <th>Должность</th>
             <th>Статус встречи</th>
+            <th>Кого пригласили</th>
+            <th>Создание встречи</th>
         </tr>
     </thead>
     <tbody>
@@ -32,10 +20,21 @@
         <tr>
             <td>{{this.name}}</td>
             <td>{{this.position}}</td>
+            {{#each this.meetings}}
+            {{#if this.invited}}
+            <td>{{this.status}}</td>
+            <td>{{this.invited}}</td>
+            {{else}} <td>Не запланировано</td>
+            <td>Нет</td>
+            {{/if}}
+            {{/each}}
+            <td><div class="creation" >
+                <button name="createMeet" id={{this.id}}>Create</button></div></td>
+                
         </tr>
             {{/each}}
-        {{!-- {{/each}} --}}
-        
+
+
     </tbody>
 </table>
 
