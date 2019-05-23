@@ -8,7 +8,7 @@ const User = require('../models/users')
 router.get('/:id', async function (req, res) {
     const users = await User.find();
     let userPresent = true;
-    console.log(req.params.id);
+
     users.forEach(function (element) {
         if (req.params.id === element.id) userPresent = true;
     });
