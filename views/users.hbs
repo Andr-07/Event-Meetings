@@ -9,17 +9,16 @@
     отрасли воздушных перевозок.
 </p>
 {{#each users}}
-<form class="addEverything" id="form1" action="/new_meet" method="get">
+<form class="addEverything" id={{this.id}} action="/new_meet" method="post">
 
     <ul class="list">
         <li class="list-item col-1-2">
-            <a class="users" href="/users/{{this.id}}">{{this.name}}
-            </a>
+            <a class="users" href="/users/{{this.id}}">{{this.name}}</a>
             <div>
                 <label>Target:</label>
-                <input type="text" id={{this.id}} class="target" />
+                <input type="text"  class="target" />
                 <label>Date:</label>
-                <input type="date" name="date" />
+                <input type="date" class="date" />
                 <input class="btnAdd" type="submit" value="Add" />
             </div>
     </ul>

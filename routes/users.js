@@ -17,16 +17,20 @@ router.get('/:id', async function (req, res) {
 
 
 router.post('/new_meet', async (req, res) => {
-  let user = await User.findOne({ name: req.body.name })
-  console.log(user)
+  // let user = await User.findOne({ name: req.body.name })
+ let link = req.body.invitedP;
   let target = req.body.target;
-  console.log(target);
+  let meetDate = req.body.meetDate;
+  userId = req.body.userId;
+  console.log(req.body);
+
+
   
   // user.meetings.push({
   //   name: req.body.name,
   //   target: req.body.target,
   //   data: new Date(req.body.date)
-  res.send(target)
+  res.json(link)
   })
   // await user.save();
 
