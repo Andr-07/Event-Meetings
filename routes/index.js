@@ -92,23 +92,24 @@ router.get('/logout', async (req, res, next) => {
 
 router.post('/new_meet', async (req, res) => {
     // let user = await User.findOne({ name: req.body.name })
-    let mainName = req.session.user.name;
+    let mainId = req.session.user._id; // Sveta
     let link = req.body.invitedP;
     let target = req.body.target;
     let meetDate = req.body.meetDate;
     userId = req.body.userId;
 
-    let user1 = await User.findById(userId)
+
+    let user1 = await User.findById(mainId)
     console.log(user1);
     console.log(user1.meetings[0]);
 
     user1.meetings[0].target = target;
     user1.meetings[0].date = meetDate;
-    user1.meetings[0].invited = mainName;
+    user1.meetings[0].invited = link;
     console.log(user1)
     await user1.save();
 
-    // console.log(req.body);
+    console.log(req.body);
     res.json(link)
 })
 module.exports = router;
