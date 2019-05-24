@@ -14,7 +14,7 @@ const userSchema = new mongoose.Schema({
         invited: String,
         status: String,
         target: String,
-        date: Date,
+        date: String,
     }]
 });
 

@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', event => {
     let inputTarget =  document.querySelectorAll('.target');
     let a = document.querySelectorAll('.users');
     let meetDate = document.querySelectorAll('.date');
+    let buttonsInvite  = document.querySelectorAll('.btnInvite');
 
 
     for (let i = 0; i < addEverything.length; i++) {
@@ -25,6 +26,10 @@ document.addEventListener('DOMContentLoaded', event => {
                     userId: e.target.id
                 })
             })
+            // buttonsInvite[i].classList.remove('btn-secondary');
+            // buttonsInvite[i].classList.remove('btn-secondary');
+             buttonsInvite[i].style.background= 'green';
+            inputTarget[i].value = '';
             const whatIget = await res.json();
             console.log(whatIget)
 

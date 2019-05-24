@@ -48,8 +48,7 @@ router.post('/createNew', async function (req, res) {
             eventDate: "23.05.2019"
     },
     meetings: [{
-        status: 'В ожидании',
-        invited: "Andrey"
+        status: 'В ожидании'
     }]
     })
     await saveData.save();
