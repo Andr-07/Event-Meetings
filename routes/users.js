@@ -40,13 +40,13 @@ router.post('/new_meet', async (req, res) => {
   })
   // await user.save();
 
-    user.forEach(function (element) {
-        if (req.params.id === element.id) userPresent = true;
-        //найти юзера в базе и залогинить:  req.session.user = user;
-        //       res.redirect('/dashboard');
-    });
-    if (userPresent) res.redirect('/dashboard');
-    else res.send('<h3>Пользовтель не существует</h3>');
+    // user.forEach(function (element) {
+    //     if (req.params.id === element.id) userPresent = true;
+    //     //найти юзера в базе и залогинить:  req.session.user = user;
+    //     //       res.redirect('/dashboard');
+    // });
+    // if (userPresent) res.redirect('/dashboard');
+    // else res.send('<h3>Пользовтель не существует</h3>');
 
 
 

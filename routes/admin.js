@@ -43,7 +43,8 @@ router.post('/createNew', async function (req, res) {
 
     let saveData = new User({
       name:name,
-        email:email, 
+        email:email,
+        password:'123',
         company:company, 
         position:position,
         globalEvent: {
