@@ -67,7 +67,7 @@ router.get('/dashboard/:id', async (req, res) => {
     const id = req.params.id;
     let user = await User.findById(id);
     console.log(user);
-    res.render('onePersonUser.hbs');
+    res.render('oneUser.hbs');
 });
 
 
@@ -89,20 +89,26 @@ router.get('/logout', async (req, res, next) => {
 
 router.post('/new_meet', async (req, res) => {
     // let user = await User.findOne({ name: req.body.name })
+    let mainName = req.session.user.name;
     let link = req.body.invitedP;
     let target = req.body.target;
     let meetDate = req.body.meetDate;
     userId = req.body.userId;
-    console.log(req.body);
 
+    let user1 = await User.findById(userId)
+    console.log(user1);
+    console.log(user1.meetings[0]);
 
+    user1.meetings[0].target = target;
+    user1.meetings[0].date = meetDate;
+    user1.meetings[0].invited = mainName;
+    console.log(user1)
+    await user1.save();
 
-    // user.meetings.push({
-    //   name: req.body.name,
-    //   target: req.body.target,
-    //   data: new Date(req.body.date)
+    // console.log(req.body);
     res.json(link)
 })
+
 
 module.exports = router;
   
