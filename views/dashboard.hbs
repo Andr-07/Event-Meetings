@@ -8,10 +8,10 @@
         <div class="navbar-collapse collapse" id="navbar9">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Личный кабинет</a>
+                    <a class="nav-link" href="/personalpage">Личный кабинет</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Список участников</a>
+                    <a class="nav-link" href="/dashboard">Список участников</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/logout">Выход</a>
@@ -21,49 +21,42 @@
     </div>
 </nav>
 
-    <div id="sample_div">
-        <br><br>
-{{#each users}}
-        <form class="addEverything" id={{this.id}} action="/new_meet" method="post">
-            <a class="users" href="/dashboard/{{this.id}}"><b>{{this.name}}</b></a>
-            <div class="form-group field-middle_name row">
-                <div class="col-sm-4 col-md-4 col-xs-4 no-padding">
-                    <input type="text"  class="target form-control" name="prefix_id" id="prefix_id" placeholder="Цель встречи" required="required">
-                        <!--<option value="">Префикс</option>-->
-                    </input>
-                </div>
-                <div class="col-sm-4 col-md-4 col-xs-4 no-padding">
-                    <input type="date" class="date form-control" id="history" placeholder="Номер" required="required">
-                </div>
-                <div class="col-sm-4 col-md-4 col-xs-4 no-padding">
-                    <input class="btnAdd btn btn-secondary btnInvite" type="submit" value="Пригласить на встречу" />
-                </div>
 
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-1">
+                </div>
+                <div class="col-md-10">
+                    <div id="sample_div">
+                        <br><br>
+                        {{#each users}}
+                            <form class="addEverything" id={{this.id}} action="/new_meet" method="post">
+                                <a class="users" href="/dashboard/{{this.id}}"><b>{{this.name}}</b></a>
+                                <div class="form-group field-middle_name row">
+                                    <div class="col-sm-4 col-md-4 col-xs-4 no-padding">
+                                        <input type="text"  class="target form-control" name="prefix_id" id="prefix_id" placeholder="Цель встречи" required="required">
+                                        <!--<option value="">Префикс</option>-->
+                                        </input>
+                                    </div>
+                                    <div class="col-sm-4 col-md-4 col-xs-4 no-padding">
+                                        <input type="date" class="date form-control" id="history" placeholder="Номер" required="required">
+                                    </div>
+                                    <div class="col-sm-4 col-md-4 col-xs-4 no-padding">
+                                        <input class="btnAdd btn btn-secondary btnInvite" type="submit" value="Пригласить на встречу" />
+                                    </div>
+
+                                </div>
+                                <div class="help-block row"></div>
+                            </form>
+                        {{/each}}
+                    </div>
+                </div>
+                </div>
+                <div class="col-md-1">
+                </div>
             </div>
-            <div class="help-block row"></div>
-        </form>
-{{/each}}
+        </div>
     </div>
 </div>
-
-<!--<div class="container row">-->
-    <!--{{#each users}}-->
-        <!--<form class="addEverything" id={{this.id}} action="/new_meet" method="post">-->
-            <!--<ul class="list">-->
-                <!--<li class="list-item col-1-2">-->
-                    <!--<a class="users" href="/dashboard/{{this.id}}">{{this.name}}</a>-->
-                    <!--<div>-->
-                        <!--<label>Target:</label>-->
-                        <!--<input type="text"  class="target" />-->
-                        <!--<label>Date:</label>-->
-                        <!--<input type="date" class="date" />-->
-                        <!--<input class="btnAdd" type="submit" value="Add" />-->
-                    <!--</div>-->
-            <!--</ul>-->
-        <!--</form>-->
-    <!--{{/each}}-->
-<!--</div>-->
-
-<!--<form id='form2' action="/users/history" method="get">-->
-    <!--<button id='history' type="submit">History</button>-->
-<!--</form>-->

@@ -57,7 +57,7 @@ router.get('/dashboard', async (req, res) => {
     const users = await User.find();
   if (req.session.user && req.cookies.user_sid) {
     res.render('dashboard', {user: req.session.user.name,
-                              users: users});
+                            users: users});
   } else {
     res.redirect('/login');
   }
@@ -66,9 +66,11 @@ router.get('/dashboard', async (req, res) => {
 router.get('/dashboard/:id', async (req, res) => {
     const id = req.params.id;
     let user = await User.findById(id);
-    console.log(user);
+
+    console.log('**********', user);
     res.render('oneUser.hbs', {
         list: user,
+        user: req.session.user.name,
     });
 });
 
