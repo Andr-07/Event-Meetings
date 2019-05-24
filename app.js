@@ -12,6 +12,10 @@ const RedisStore = require('connect-redis')(session);
 const client  = redis.createClient();
 const {cookiesCleaner} = require('./middleware/auth');
 
+// Импорт маршрутов.
+const indexRouter = require("./routes/index");
+const adminRouter = require("./routes/admin");
+const usersRouter = require("./routes/users");
 
 app.use(morgan("dev"));
 // Обработка POST запросов.
@@ -48,8 +52,6 @@ app.use(session({
 app.use(cookiesCleaner);
 
 
-// Импорт маршрутов.
-const indexRouter = require("./routes/index");
 
 
 // Подключаем mongoose.
@@ -67,6 +69,8 @@ app.set('view engine', 'hbs');
 
 // Подключаем импортированные маршруты с определенным url префиксом.
 app.use('/', indexRouter);
+app.use('/admin', adminRouter);
+app.use('/users', usersRouter);
 
 // Обработка ошибок.
 app.use((req, res, next) => {
@@ -85,3 +89,4 @@ app.use((error, req, res, next) => {
 });
 
 module.exports = app;
+
