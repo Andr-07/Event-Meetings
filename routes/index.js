@@ -112,5 +112,17 @@ router.post('/new_meet', async (req, res) => {
     console.log(req.body);
     res.json(link)
 })
+
+router.get('/personalpage', async (req, res) => {
+  let id = req.session.user._id;
+  console.log('---------------', id)
+  let user = await User.findById(id);
+  console.log(user)
+  res.render('personalpage.hbs', {
+    user
+  });
+});
+
+
 module.exports = router;
   
