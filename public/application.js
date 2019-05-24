@@ -42,7 +42,7 @@ for (let i = 0; i < creation.length; i++) {
 const btnAccept = document.querySelector(".accept");
 const btnReject = document.querySelector(".reject");
 
-btnAccept.addEventListener('click', async (e) => {
+btnAccept && btnAccept.addEventListener('click', async (e) => {
     console.log(e.target.id)
     let res = await fetch('/admin/accept', {
         method: 'POST',
@@ -59,7 +59,7 @@ btnAccept.addEventListener('click', async (e) => {
 
 });
 
-btnReject.addEventListener('click', async (e) => {
+btnReject && btnReject.addEventListener('click', async (e) => {
     console.log(e.target.id)
     let res = await fetch('/admin/reject', {
         method: 'POST',

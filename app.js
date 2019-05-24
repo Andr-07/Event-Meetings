@@ -15,6 +15,7 @@ const {cookiesCleaner} = require('./middleware/auth');
 // Импорт маршрутов.
 const indexRouter = require("./routes/index");
 const adminRouter = require("./routes/admin");
+const usersRouter = require("./routes/users");
 
 app.use(morgan("dev"));
 // Обработка POST запросов.
@@ -69,6 +70,7 @@ app.set('view engine', 'hbs');
 // Подключаем импортированные маршруты с определенным url префиксом.
 app.use('/', indexRouter);
 app.use('/admin', adminRouter);
+app.use('/users', usersRouter);
 
 // Обработка ошибок.
 app.use((req, res, next) => {

@@ -1,4 +1,32 @@
-<form action="/users" method="post">
-<input type="text">
-<button type="submit">Submit</button>
+<h2>Digital Aviation Forum</h2>
+<h3>12-я международная конференция</h3>
+<p>
+    <br>Говорить о цифровизации сейчас модно.
+    <br>Но для воздушного транспорта цифровая трансформация стала насущной необходимостью.
+    <br>
+    <br>Для повышения конкурентоспособности и укрепления рыночных позиций требуется переосмыслить на основе новых
+    технологий систему взаимодействия с десятками миллионов пассажиров и внутренние бизнес-процессы всех участников
+    отрасли воздушных перевозок.
+</p>
+{{#each users}}
+<form class="addEverything" id="form1" action="/new_meet" method="get">
+
+    <ul class="list">
+        <li class="list-item col-1-2">
+            <a class="users" href="/users/{{this.id}}">{{this.name}}
+            </a>
+            <div>
+                <label>Target:</label>
+                <input type="text" id={{this.id}} class="target" />
+                <label>Date:</label>
+                <input type="date" name="date" />
+                <input class="btnAdd" type="submit" value="Add" />
+            </div>
+    </ul>
 </form>
+{{/each}}
+
+<form id='form2' action="/users/history" method="get">
+    <button id='history' type="submit">History</button>
+</form>
+

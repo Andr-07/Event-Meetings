@@ -97,7 +97,7 @@ router.post('/createNew', async function (req, res) {
       let user1 = (await User.find({_id: userId}))
       user1[0].meetings[0].invited = undefined;
       console.log(user1);
-       await user1[0].save();g
+       await user1[0].save();
         res.json();
        })
 
