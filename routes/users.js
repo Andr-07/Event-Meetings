@@ -3,12 +3,42 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
-const User = require('../models/users')
+
+
+const User = require('../models/users');
+/* GET users listing. */
+
+
+router.get('/', async function (req, res) {
+  const users = await User.find();
+  res.render('users', { users });
+});
 
 router.get('/:id', async function (req, res) {
-    const user = await User.find();
-    //const user = await User.findOne({ email: username });
-    let userPresent = true;
+  const users = await User.find();
+     userPresent = true;
+
+    res.render('oneUser', { users });
+});
+
+
+router.post('/new_meet', async (req, res) => {
+  // let user = await User.findOne({ name: req.body.name })
+ let link = req.body.invitedP;
+  let target = req.body.target;
+  let meetDate = req.body.meetDate;
+  userId = req.body.userId;
+  console.log(req.body);
+
+
+  
+  // user.meetings.push({
+  //   name: req.body.name,
+  //   target: req.body.target,
+  //   data: new Date(req.body.date)
+  res.json(link)
+  })
+  // await user.save();
 
     user.forEach(function (element) {
         if (req.params.id === element.id) userPresent = true;
@@ -18,29 +48,19 @@ router.get('/:id', async function (req, res) {
     if (userPresent) res.redirect('/dashboard');
     else res.send('<h3>Пользовтель не существует</h3>');
 
-    // res.json(users);
-    // res.redirect('https://google.com')
+
+
+
+
+router.get('/history', async (req, res) => {
+  let invited = [];
+  let users = await User.find()
+  for (let i = 0; i < users.length; i++) {
+    if (users[i].meeting.invited) {
+      invited.push(users[i])
+    }
+  }
+  res.render('history', invited)
 });
 
-// /* GET users listing. */
-// router.get('/', async function(req, res) {
-//   const users = await User.find();
-//   res.json(users);
-//   // res.redirect('https://google.com')
-// });
-//
-// router.post('/', async (req, res) => {
-//   const user = new User({
-//     name: req.body.name,
-//     age: req.body.age,
-//   })
-//   await user.save();
-//   // console.log();
-//   res.send(user._id);
-// })
-//
-//
-// router.get('/form', function(req, res) {
-//   res.render('users');
-// });
-module.exports = router;
+module.exports = router; 

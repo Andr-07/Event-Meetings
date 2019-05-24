@@ -2,13 +2,14 @@ const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema({
     name: String,
-    company: String,
-    position: String,
+
     email: String,
     password: String,
+    company: String,
+    position: String,
     globalEvent: {
-        eventNames:String,
-        eventDate:String
+        eventNames:String, 
+        eventDate: String
     },
     meetings: [{
         invited: String,

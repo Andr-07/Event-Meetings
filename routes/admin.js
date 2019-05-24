@@ -4,7 +4,8 @@ const User = require('../models/users');
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
+
+router.get('/', sessionChecker, (req, res) => {
     res.render('admin');
   });
 
@@ -34,10 +35,12 @@ router.get('/show', async function (req, res){
 
 
 router.post('/createNew', async function (req, res) {
+
     let name = req.body.createName;
     let email = req.body.createEm;
     let company = req.body.createC;
     let position = req.body.createP;
+
     let saveData = new User({
       name:name,
         email:email, 
@@ -49,7 +52,8 @@ router.post('/createNew', async function (req, res) {
     },
     meetings: [{
         status: false,
-        invited: "Andrey"
+
+        invited: "Svetlana"
     }]
     })
     await saveData.save();
@@ -61,8 +65,13 @@ router.post('/createNew', async function (req, res) {
   router.get('/:id', async function (req, res) {
     let id = req.params.id;
     let all = await User.findById(req.params.id);
+
+    console.log(all)
     let person =  all.meetings.map(item=>item.invited)[0]
+
     let invitedPerson = await User.find({name:person})
+
+    // console.log(invitedPerson[0])
     // let answer = req.body.createMeet;
     // let response = await Category.findOneById(answer);
     // console.log('---------', answer)
@@ -70,6 +79,43 @@ router.post('/createNew', async function (req, res) {
     res.render('onePerson', {list: all, person:invitedPerson[0]});
   })
 
+
+  router.post('/accept', async function (req, res) {
+    let userId = req.body.userId;
+    let button = req.body.button;
+    console.log(userId, button);
+
+    let user1 = (await User.find({_id: userId}))
+    user1[0].meetings[0].status = true;
+    console.log(user1);
+     await user1[0].save();
+      res.json();
+     })
+
+     router.post('/reject', async function (req, res) {
+      let userId = req.body.userId;
+      let button = req.body.button;
+      console.log(userId, button);
+  
+      let user1 = (await User.find({_id: userId}))
+      user1[0].meetings[0].invited = undefined;
+      console.log(user1);
+       await user1[0].save();
+        res.json();
+       })
+
+
+
+  
+    
+    // let userPassword = req.body.userPassword;
+    // let saveUser = new Registration({
+    //   name: userName,
+    //   email: userEmail,
+    //   password: userPassword
+    // })
+    // await saveUser.save();
+    // res.json(saveUser)
 
 
 
