@@ -20,8 +20,6 @@ app.use(express.urlencoded({ extended: true }));
 // json.
 app.use(express.json());
 
-
-
 // initialize cookie-parser to allow us access the cookies stored in the browser. 
 app.use(cookieParser());
 
@@ -31,14 +29,14 @@ app.use(session({
     client,
     host: 'localhost', 
     port: 6379, 
-    ttl :  2060
+    ttl :  2600
   }),
   key: 'user_sid',
   secret: 'anything here',
   resave: false,
   saveUninitialized: false,
   cookie: {
-    expires: 6000000
+    // expires: 6000000
   }
 }));
 

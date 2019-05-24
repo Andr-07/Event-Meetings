@@ -1,14 +1,42 @@
-<a href="/dashboard">Назад</a>
-<h1>Контактная карточка:</h1>
-<div class="row">
-    <div class="col-4" style="border-style: double; padding:2px">
-        Имя: {{list.name}}
-        <p></p>
-        Должность: {{list.position}}
-        <p></p>
-        Компания: {{list.company}}
-        <p></p>
-        Почта: {{list.email}}
-        <p></p>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <a href="/" class="navbar-brand">Участник форума: {{user}} </a>
+        <button class="navbar-toggler float-right" type="button" data-toggle="collapse" data-target="#navbar9">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbar9">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/personalpage">Личный кабинет</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/dashboard">Список участников</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout">Выход</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="container-fluid">
+    <div class="row m-4">
+        <div class="col-md-2">
+        </div>
+        <div class="col-md-8 border-right border-left">
+            <p>Имя: <b>{{list.name}}</b></p>
+            <p>Должность: {{list.position}}</p>
+            <p>Компания: {{list.company}}</p>
+            <p>Почта: {{list.email}}</p>
+        </div>
+        <div class="col-md-2">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <p style=" text-align: center"><a class="text-dark" href="/dashboard">назад</a></p>
+        </div>
     </div>
 </div>
