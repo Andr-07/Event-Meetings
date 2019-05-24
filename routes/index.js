@@ -63,6 +63,7 @@ router.get('/dashboard', async (req, res) => {
   }
 });
 
+
 router.get('/dashboard/:id', async (req, res) => {
     const id = req.params.id;
     let user = await User.findById(id);
