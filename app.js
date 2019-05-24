@@ -31,14 +31,14 @@ app.use(session({
     client,
     host: 'localhost', 
     port: 6379, 
-    ttl :  260
+    ttl :  2600
   }),
   key: 'user_sid',
   secret: 'anything here',
   resave: false,
   saveUninitialized: false,
   cookie: {
-    // expires: 6000000
+    expires: 6000000
   }
 }));
 
