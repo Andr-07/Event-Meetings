@@ -1,0 +1,46 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <a href="/" class="navbar-brand">Личный кабинет: {{user.name}} </a>
+        <button class="navbar-toggler float-right" type="button" data-toggle="collapse" data-target="#navbar9">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbar9">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/personalpage">Личный кабинет</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/dashboard">Список участников</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout">Выход</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+    <div class="container-fluid">
+   <div class="row m-4">
+       <div class="col-md-2">
+       </div>
+       <div class="col-md-8 border-right border-left">
+           <p>Имя: <b>{{user.name}}</b></p>
+           <p>Должность: {{user.position}}</p>
+           <p>Компания: {{user.company}}</p>
+           <p>Почта: {{user.email}}</p>
+           {{#each user.meetings}}
+           <p>Собеседник: {{this.invited}}</p>
+           <p>Время: {{this.date}}</p>
+           <p>Цель встречи: {{this.target}}</p>
+           {{/each}}
+       </div>
+       <div class="col-md-2">
+       </div>
+   </div>
+   <div class="row">
+       <div class="col-md-12">
+           <p style=" text-align: center"><a class="text-dark" href="/dashboard">назад</a></p>
+       </div>
+   </div>
+</div>

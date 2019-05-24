@@ -32,6 +32,9 @@ document.addEventListener('DOMContentLoaded', event => {
             inputTarget[i].value = '';
             const whatIget = await res.json();
             console.log(whatIget)
+            inputTarget[i].value = '';
+            
+
 
         })
     }
