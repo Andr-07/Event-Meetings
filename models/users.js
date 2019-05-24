@@ -4,10 +4,11 @@ const userSchema = new mongoose.Schema({
     name: String,
     company: String,
     position: String,
+    email: String,
     password: String,
     globalEvent: {
         eventNames:String,
-        eventDate:Date
+        eventDate:String
     },
     meetings: [{
         invited: String,

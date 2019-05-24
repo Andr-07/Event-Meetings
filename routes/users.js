@@ -6,13 +6,16 @@ const mongoose = require('mongoose');
 const User = require('../models/users')
 
 router.get('/:id', async function (req, res) {
-    const users = await User.find();
+    const user = await User.find();
+    //const user = await User.findOne({ email: username });
     let userPresent = true;
 
-    users.forEach(function (element) {
+    user.forEach(function (element) {
         if (req.params.id === element.id) userPresent = true;
+        //найти юзера в базе и залогинить:  req.session.user = user;
+        //       res.redirect('/dashboard');
     });
-    if (userPresent) res.render('users');
+    if (userPresent) res.redirect('/dashboard');
     else res.send('<h3>Пользовтель не существует</h3>');
 
     // res.json(users);

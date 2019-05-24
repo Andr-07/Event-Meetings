@@ -55,7 +55,7 @@ router.route('/login')
 // route for user's dashboard
 router.get('/dashboard', (req, res) => {
   if (req.session.user && req.cookies.user_sid) {
-    res.render('dashboard');
+    res.render('dashboard', {user: req.session.user.name});
   } else {
     res.redirect('/login');
   }

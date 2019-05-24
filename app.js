@@ -51,6 +51,8 @@ app.use(cookiesCleaner);
 // Импорт маршрутов.
 const indexRouter = require("./routes/index.js");
 const userRouter = require("./routes/users.js");
+const adminRouter = require("./routes/admin.js");
+
 
 
 // Подключаем mongoose.
@@ -69,6 +71,7 @@ app.set('view engine', 'hbs');
 // Подключаем импортированные маршруты с определенным url префиксом.
 app.use('/', indexRouter);
 app.use('/users', userRouter);
+app.use('/admin', adminRouter);
 
 // Обработка ошибок.
 app.use((req, res, next) => {
