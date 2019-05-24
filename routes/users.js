@@ -11,28 +11,32 @@ router.get('/', async function (req, res) {
 });
 
 router.get('/:id', async function (req, res) {
-  const users = await User.find();
-  res.render('oneUser', { users });
+  const list = await User.findById(req.params.id);
+  res.render('oneUser', { list });
 });
 
 
 router.post('/new_meet', async (req, res) => {
   // let user = await User.findOne({ name: req.body.name })
+  let mainName = "Georg"
  let link = req.body.invitedP;
   let target = req.body.target;
   let meetDate = req.body.meetDate;
   userId = req.body.userId;
-  console.log(req.body);
 
-
+  let user1 = await User.findById(userId)
+  console.log(user1);
+  console.log(user1.meetings[0]);
   
-  // user.meetings.push({
-  //   name: req.body.name,
-  //   target: req.body.target,
-  //   data: new Date(req.body.date)
+  user1.meetings[0].target = target;
+  user1.meetings[0].date = meetDate;
+  user1.meetings[0].invited = mainName;
+  console.log(user1)
+  await user1.save();
+
+  // console.log(req.body);
   res.json(link)
   })
-  // await user.save();
 
 
 
