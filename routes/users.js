@@ -1,6 +1,10 @@
+'use strict'
+
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
+
+
 const User = require('../models/users');
 /* GET users listing. */
 
@@ -12,7 +16,9 @@ router.get('/', async function (req, res) {
 
 router.get('/:id', async function (req, res) {
   const users = await User.find();
-  res.render('oneUser', { users });
+     userPresent = true;
+
+    res.render('oneUser', { users });
 });
 
 
@@ -34,19 +40,17 @@ router.post('/new_meet', async (req, res) => {
   })
   // await user.save();
 
+    user.forEach(function (element) {
+        if (req.params.id === element.id) userPresent = true;
+        //найти юзера в базе и залогинить:  req.session.user = user;
+        //       res.redirect('/dashboard');
+    });
+    if (userPresent) res.redirect('/dashboard');
+    else res.send('<h3>Пользовтель не существует</h3>');
 
 
-      // user.meeting.findOneAndUpdate({
-      //   $set: { 
-      //     target: req.body.target, 
-      //     data: req.body.date 
-      //   }
-      // }), ({ new: true }), async (err, doc) => {
-      //   if (err) {
-      //     console.log("Something wrong when updating data!");
-      //   }
-      // }
-      // res.redirect('/')
+
+
 
 router.get('/history', async (req, res) => {
   let invited = [];

@@ -1,82 +1,118 @@
-<a href="/admin">Назад</a>
-<h1>Create a new meeting</h1>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <a href="#" class="navbar-brand">Админ панель</a>
+        <button class="navbar-toggler float-right" type="button" data-toggle="collapse" data-target="#navbar9">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbar9">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin">Создать пользователя</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin/meetings">Список пользователей/создание встреч</a>
+                </li>
+                <!--<li class="nav-item">-->
+                <!--<a class="nav-link" href="/admin/show">Список пользователей</a>-->
+                <!--</li>-->
+            </ul>
+        </div>
+    </div>
+</nav>
 
 
-<div class="log"></div>
-
-<table class="table_sort">
-    <thead>
-        <tr>
-            <th>Имя</th>
-            <th>Должность</th>
-            <th>Статус встречи</th>
-            <th>Кого пригласили</th>
-            <th>Создание встречи</th>
-        </tr>
-    </thead>
-    <tbody>
-        {{!-- {{#each list}} --}}
-            {{#each list}}
-        <tr>
-            <td>{{this.name}}</td>
-            <td>{{this.position}}</td>
-            {{#each this.meetings}}
-            {{#if this.invited}}
-            <td>{{this.status}}</td>
-            <td>{{this.invited}}</td>
-            {{else}} <td>Не запланировано</td>
-            <td>Нет</td>
-            {{/if}}
-            {{/each}}
-            <td><div class="creation" >
-                <button name="createMeet" id={{this.id}}>Create</button></div></td>
-                
-        </tr>
-            {{/each}}
 
 
-    </tbody>
-</table>
 
-<style>.table_sort table {
-    border-collapse: collapse;
-}
+<div class="container-fluid">
+    <div class="row m-3">
+        <div class="col-md-1">
+        </div>
+        <div class="col-md-10">
+            <div class="log"></div>
 
-.table_sort th {
-    color: #ffebcd;
-    background: #008b8b;
-    cursor: pointer;
-}
+            <table class="table_sort">
+                <thead>
+                <tr>
+                    <th>Имя</th>
+                    <th>Должность</th>
+                    <th>Статус встречи</th>
+                    <th>Кого пригласили</th>
+                    <th>Создание встречи</th>
+                </tr>
+                </thead>
+                <tbody>
+                {{!-- {{#each list}} --}}
+                {{#each list}}
+                    <tr>
+                        <td>{{this.name}}</td>
+                        <td>{{this.position}}</td>
+                        {{#each this.meetings}}
+                            {{#if this.invited}}
+                                <td>{{this.status}}</td>
+                                <td>{{this.invited}}</td>
+                            {{else}}
+                                <td>Не запланировано</td>
+                                <td>Нет</td>
+                            {{/if}}
+                        {{/each}}
+                        <td>
+                            <div class="creation">
+                                <button name="createMeet" id={{this.id}}>Create</button>
+                            </div>
+                        </td>
 
-.table_sort td,
-.table_sort th {
-    width: 150px;
-    height: 40px;
-    text-align: center;
-    border: 2px solid #846868;
-}
+                    </tr>
+                {{/each}}
 
-.table_sort tbody tr:nth-child(even) {
-    background: #e3e3e3;
-}
 
-th.sorted[data-order="1"],
-th.sorted[data-order="-1"] {
-    position: relative;
-}
+                </tbody>
+            </table>
 
-th.sorted[data-order="1"]::after,
-th.sorted[data-order="-1"]::after {
-    right: 8px;
-    position: absolute;
-}
+            <style>.table_sort table {
+                border-collapse: collapse;
+            }
 
-th.sorted[data-order="-1"]::after {
-	content: "▼"
-}
+            .table_sort th {
+                /*color: #fff1fd;*/
+                /*background: #383838;*/
+                cursor: pointer;
+            }
 
-th.sorted[data-order="1"]::after {
-	content: "▲"
-}</style>
+            .table_sort td,
+            .table_sort th {
+                width: 150px;
+                height: 40px;
+                text-align: center;
+                border: 1px solid #39363c;
+            }
 
-  <script src="/new.js"></script>
+            .table_sort tbody tr:nth-child(even) {
+                background: #e3e3e3;
+            }
+
+            th.sorted[data-order="1"],
+            th.sorted[data-order="-1"] {
+                position: relative;
+            }
+
+            th.sorted[data-order="1"]::after,
+            th.sorted[data-order="-1"]::after {
+                right: 8px;
+                position: absolute;
+            }
+
+            th.sorted[data-order="-1"]::after {
+                content: "▼"
+            }
+
+            th.sorted[data-order="1"]::after {
+                content: "▲"
+            }</style>
+        </div>
+        <div class="col-md-1">
+        </div>
+    </div>
+</div>
+
+<script src="/new.js"></script>

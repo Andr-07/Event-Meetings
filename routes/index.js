@@ -39,10 +39,9 @@ router.route('/login')
   .post(async (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
-
-    const user = await User.findOne({ username });
-    if (!user) {
-      res.redirect('/login');
+      const user = await User.findOne({ email: username });
+      if (!user) {
+        res.redirect('/login');
       // } else if (!user.validPassword(password)) {
     } else if (user.password !== password) {
       res.redirect('/login');
@@ -50,14 +49,13 @@ router.route('/login')
       req.session.user = user;
       res.redirect('/dashboard');
     }
-
   });
 
 
 // route for user's dashboard
 router.get('/dashboard', (req, res) => {
   if (req.session.user && req.cookies.user_sid) {
-    res.render('dashboard');
+    res.render('dashboard', {user: req.session.user.name});
   } else {
     res.redirect('/login');
   }

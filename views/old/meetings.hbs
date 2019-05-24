@@ -1,30 +1,27 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
-        <a href="#" class="navbar-brand">Админ панель</a>
+        <a href="/" class="navbar-brand">Админ панель</a>
         <button class="navbar-toggler float-right" type="button" data-toggle="collapse" data-target="#navbar9">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="navbar-collapse collapse" id="navbar9">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="/admin">Создать пользователя</a>
+                    <a class="nav-link" href="#">Создать пользователя</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/admin/meetings">Список пользователей/создание встреч</a>
+                    <a class="nav-link" href="#">Список пользователей</a>
                 </li>
-                <!--<li class="nav-item">-->
-                    <!--<a class="nav-link" href="/admin/show">Список пользователей</a>-->
-                <!--</li>-->
+                <li class="nav-item">
+                    <a class="nav-link" href="#"></a>
+                </li>
             </ul>
         </div>
     </div>
 </nav>
 
 
-<!--<ul>-->
-<!--<li><a href="/admin/show">Show the list</a></li>-->
-<!--<li><a href="/admin/meetings"> Create a meeting</a></li>-->
-<!--</ul>-->
+<h1>Create a new meeting</h1>
 
 <!--<form id="createNew" >-->
     <!--<label>Name</label>-->
@@ -43,7 +40,7 @@
 <!--</form>-->
 
 <div class="container-fluid">
-    <div class="row m-3">
+    <div class="row">
         <div class="col-md-2">
         </div>
         <div class="col-md-8">
@@ -56,7 +53,7 @@
                 <div class="form-group">
                     <label for="createEm">Email адрес</label>
                     <input type="email" class="form-control" id="createEm" name="createEm" aria-describedby="emailHelp" placeholder="Email адрес">
-
+                    <!--<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
                 </div>
                 <!--<div class="form-group">-->
                 <!--<label for="createPassword">Пароль</label>-->
@@ -65,13 +62,15 @@
                 <div class="form-group">
                     <label for="createC">Компания</label>
                     <input type="text" class="form-control" id="createC" name="createC" aria-describedby="emailHelp" placeholder="Компания">
+                    <!--<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
                 </div>
                 <div class="form-group">
-                    <label for="createP">Должность</label>
-                    <input type="text" class="form-control" id="createP" name="createP" aria-describedby="emailHelp" placeholder="Должность">
+                    <label for="createP">Компания</label>
+                    <input type="text" class="form-control" id="createP" name="createP" aria-describedby="emailHelp" placeholder="Компания">
+                    <!--<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
                 </div>
 
-                <button type="submit" class="btn btn-dark">Создать пользователя</button>
+                <button type="submit" class="btn btn-dark">Создать</button>
             </form>
         </div>
         <div class="col-md-2">
@@ -79,5 +78,68 @@
     </div>
 </div>
 
-
 <div class="log"></div>
+
+<table class="table_sort">
+    <thead>
+    <tr>
+        <th>Имя</th>
+        <th>Должность</th>
+        <th>Статус встречи</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{!-- {{#each list}} --}}
+    {{#each list}}
+        <tr>
+            <td>{{this.name}}</td>
+            <td>{{this.position}}</td>
+        </tr>
+    {{/each}}
+    {{!-- {{/each}} --}}
+
+    </tbody>
+</table>
+
+<style>.table_sort table {
+    border-collapse: collapse;
+}
+
+.table_sort th {
+    color: #ffebcd;
+    background: #008b8b;
+    cursor: pointer;
+}
+
+.table_sort td,
+.table_sort th {
+    width: 150px;
+    height: 40px;
+    text-align: center;
+    border: 2px solid #846868;
+}
+
+.table_sort tbody tr:nth-child(even) {
+    background: #e3e3e3;
+}
+
+th.sorted[data-order="1"],
+th.sorted[data-order="-1"] {
+    position: relative;
+}
+
+th.sorted[data-order="1"]::after,
+th.sorted[data-order="-1"]::after {
+    right: 8px;
+    position: absolute;
+}
+
+th.sorted[data-order="-1"]::after {
+    content: "▼"
+}
+
+th.sorted[data-order="1"]::after {
+    content: "▲"
+}</style>
+
+<script src="/new.js"></script>

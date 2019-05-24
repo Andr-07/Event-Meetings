@@ -4,6 +4,7 @@ const User = require('../models/users');
 
 const router = express.Router();
 
+
 router.get('/', sessionChecker, (req, res) => {
     res.render('admin');
   });
@@ -34,8 +35,7 @@ router.get('/show', async function (req, res){
 
 
 router.post('/createNew', async function (req, res) {
-    console.log("+++++++++++");
-    
+
     let name = req.body.createName;
     let email = req.body.createEm;
     let company = req.body.createC;
@@ -52,6 +52,7 @@ router.post('/createNew', async function (req, res) {
     },
     meetings: [{
         status: false,
+
         invited: "Svetlana"
     }]
     })
@@ -64,6 +65,7 @@ router.post('/createNew', async function (req, res) {
   router.get('/:id', async function (req, res) {
     let id = req.params.id;
     let all = await User.findById(req.params.id);
+
     console.log(all)
     let person =  all.meetings.map(item=>item.invited)[0]
 
@@ -76,6 +78,7 @@ router.post('/createNew', async function (req, res) {
     // res.json(response)
     res.render('onePerson', {list: all, person:invitedPerson[0]});
   })
+
 
   router.post('/accept', async function (req, res) {
     let userId = req.body.userId;
