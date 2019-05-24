@@ -38,4 +38,41 @@ for (let i = 0; i < creation.length; i++) {
         window.location.href = `/admin/${e.target.id}`
         })   
 }
+
+    const btnAccept = document.querySelector(".accept");
+    const btnReject = document.querySelector(".reject");
+
+    btnAccept && btnAccept.addEventListener('click', async (e) => {
+        console.log(e.target.id)
+        let res = await fetch('/admin/accept', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                userId: e.target.id,
+                button: e.target.innerText
+            })
+
+        });
+
+    });
+
+    btnReject && btnReject.addEventListener('click', async (e) => {
+        console.log(e.target.id)
+        let res = await fetch('/admin/reject', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                userId: e.target.id,
+                button: e.target.innerText
+            })
+
+        });
+
+    });
 });

@@ -53,12 +53,21 @@ router.route('/login')
 
 
 // route for user's dashboard
-router.get('/dashboard', (req, res) => {
+router.get('/dashboard', async (req, res) => {
+    const users = await User.find();
   if (req.session.user && req.cookies.user_sid) {
-    res.render('dashboard', {user: req.session.user.name});
+    res.render('dashboard', {user: req.session.user.name,
+                              users: users});
   } else {
     res.redirect('/login');
   }
+});
+
+router.get('/dashboard/:id', async (req, res) => {
+    const id = req.params.id;
+    let user = await User.findById(id);
+    console.log(user);
+    res.render('onePersonUser.hbs');
 });
 
 
@@ -78,6 +87,22 @@ router.get('/logout', async (req, res, next) => {
   }
 });
 
+router.post('/new_meet', async (req, res) => {
+    // let user = await User.findOne({ name: req.body.name })
+    let link = req.body.invitedP;
+    let target = req.body.target;
+    let meetDate = req.body.meetDate;
+    userId = req.body.userId;
+    console.log(req.body);
+
+
+
+    // user.meetings.push({
+    //   name: req.body.name,
+    //   target: req.body.target,
+    //   data: new Date(req.body.date)
+    res.json(link)
+})
 
 module.exports = router;
   

@@ -23,5 +23,39 @@
 
 
 <div class="container row">
-    <h1>Hi, Welcome {{user}}</h1>
+    {{#each users}}
+        <form class="addEverything" id={{this.id}} action="/new_meet" method="post">
+            <ul class="list">
+                <li class="list-item col-1-2">
+                    <a class="users" href="/dashboard/{{this.id}}">{{this.name}}</a>
+                    <div>
+                        <label>Target:</label>
+                        <input type="text"  class="target" />
+                        <label>Date:</label>
+                        <input type="date" class="date" />
+                        <input class="btnAdd" type="submit" value="Add" />
+                    </div>
+            </ul>
+        </form>
+    {{/each}}
+
+    <form id='form2' action="/users/history" method="get">
+        <button id='history' type="submit">History</button>
+    </form>
+
+    <div id="sample_div">
+        <form>
+            <div class="form-group field-middle_name row">
+                <div class="col-sm-6 col-md-6 col-xs-6 no-padding">
+                    <input type="text"  class="target form-control" name="prefix_id" id="prefix_id" placeholder="Цель встречи" required="required">
+                        <option value="">Префикс</option>
+                    </input>
+                </div>
+                <div class="col-sm-6 col-md-6 col-xs-6 no-padding">
+                    <input type="date" class="date form-control" id="history" placeholder="Номер" required="required">
+                </div>
+            </div>
+            <div class="help-block row"></div>
+        </form>
+    </div>
 </div>

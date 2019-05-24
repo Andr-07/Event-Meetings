@@ -48,7 +48,7 @@ router.post('/createNew', async function (req, res) {
             eventDate: "23.05.2019"
     },
     meetings: [{
-        status: false,
+        status: 'В ожидании',
         invited: "Andrey"
     }]
     })
@@ -70,6 +70,29 @@ router.post('/createNew', async function (req, res) {
     res.render('onePerson', {list: all, person:invitedPerson[0]});
   })
 
+router.post('/accept', async function (req, res) {
+    let userId = req.body.userId;
+    let button = req.body.button;
+    console.log(userId, button);
+
+    let user1 = (await User.find({_id: userId}))
+    user1[0].meetings[0].status = 'Встреча подтверждена';
+    console.log(user1);
+    await user1[0].save();
+    res.json();
+})
+
+router.post('/reject', async function (req, res) {
+    let userId = req.body.userId;
+    let button = req.body.button;
+    console.log(userId, button);
+
+    let user1 = (await User.find({_id: userId}))
+    user1[0].meetings[0].invited = undefined;
+    console.log(user1);
+    await user1[0].save();
+    res.json();
+})
 
 
 

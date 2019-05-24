@@ -12,9 +12,9 @@ const userSchema = new mongoose.Schema({
     },
     meetings: [{
         invited: String,
-        status: Boolean,
+        status: String,
         target: String,
-        date: Date
+        date: Date,
     }]
 });
 
