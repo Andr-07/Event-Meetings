@@ -67,7 +67,9 @@ router.get('/dashboard/:id', async (req, res) => {
     const id = req.params.id;
     let user = await User.findById(id);
     console.log(user);
-    res.render('oneUser.hbs');
+    res.render('oneUser.hbs', {
+        list: user,
+    });
 });
 
 
@@ -108,7 +110,5 @@ router.post('/new_meet', async (req, res) => {
     // console.log(req.body);
     res.json(link)
 })
-
-
 module.exports = router;
   

@@ -21,8 +21,11 @@ document.addEventListener('DOMContentLoaded', event => {
             createP: createP.value
         })
     })
-    const whatIget = await res.json();
-    console.log("+++++++++++")
+        const whatIget = await res.json();
+        createName.value = '';
+        createEm.value = '';
+        createC.value = '';
+        createP.value = '';
     
 })
 
@@ -54,9 +57,8 @@ for (let i = 0; i < creation.length; i++) {
                 userId: e.target.id,
                 button: e.target.innerText
             })
-
         });
-
+        setTimeout(function () {window.location.href = '/admin/meetings'}, 850)
     });
 
     btnReject && btnReject.addEventListener('click', async (e) => {
@@ -71,8 +73,8 @@ for (let i = 0; i < creation.length; i++) {
                 userId: e.target.id,
                 button: e.target.innerText
             })
-
         });
+        setTimeout(function () {window.location.href = '/admin/meetings'}, 850);
 
     });
 });
